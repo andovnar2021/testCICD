@@ -46,11 +46,11 @@ jobs:
       - name: 'export TAG_TO_IMAGE main'
         if: ${{ github.ref == 'main' }}
         run: export TAG_TO_IMAGE='latest'
-      - name: 'export TAG_TO_IMAGE main'
+      - name: 'export TAG_TO_IMAGE develop'
         if: ${{ github.ref == 'develop' }}
         run: export TAG_TO_IMAGE='${{ github.sha }}'
-      - name: 'export TAG_TO_IMAGE main'
+      - name: 'export TAG_TO_IMAGE tag'
         if: ${{ github.ref == 'main' }}
         run: export TAG_TO_IMAGE='1.0.1'
       - name: Print complete webhook event payload
-        run: cat $TAG_TO_IMAGE
+        run: echo $TAG_TO_IMAGE
