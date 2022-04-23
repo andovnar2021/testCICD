@@ -40,20 +40,20 @@ jobs:
           echo "GITHUB_SHA:$GITHUB_SHA"
           echo "GITHUB_REF:$GITHUB_REF"
           echo "GITHUB_HEAD_REF:$GITHUB_HEAD_REF"
-          echo "1:${{ env.GITHUB_REF_NAME }}"
+          echo "1:${{ env.GITHUB_REF }}"
           echo "2:${{ github.ref_name }}"
         
       - name: Print complete webhook event payload
         run: cat $GITHUB_EVENT_PATH
         
       - name: 'export TAG_TO_IMAGE main'
-        if: ${{ env.GITHUB_REF_NAME }} == 'main' 
+        if: ${{ env.GITHUB_REF == 'main' }}
         run: export TAG_TO_IMAGE='latest'
       - name: 'export TAG_TO_IMAGE develop'
-        if: ${{ env.GITHUB_REF_NAME }} == 'develop'
+        if: ${{ env.GITHUB_REF == 'develop' }}
         run: export TAG_TO_IMAGE='${{ github.sha }}'
       - name: 'export TAG_TO_IMAGE tag'
-        if: ${{ env.GITHUB_REF_NAME }} == 'tag'
+        if: ${{ env.GITHUB_REF == 'tag' }}
         run: export TAG_TO_IMAGE='1.0.1'
       - name: Print complete webhook event payload
         run: echo $TAG_TO_IMAGE
