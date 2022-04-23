@@ -44,14 +44,14 @@ jobs:
         run: cat $GITHUB_EVENT_PATH
         
       - name: 'export TAG_TO_IMAGE main'
-        if: ${{ github.ref }} == 'main' 
+        if: $GITHUB_REF == 'main' 
         run: export TAG_TO_IMAGE='latest'
         
       - name: 'export TAG_TO_IMAGE develop'
-        if: ${{ github.ref }} == 'develop' 
+        if: $GITHUB_REF == 'develop' 
         run: export TAG_TO_IMAGE='${{ github.sha }}'
       - name: 'export TAG_TO_IMAGE tag'
-        if: ${{ github.ref }} == 'tag' 
+        if: $GITHUB_REF == 'tag' 
         run: export TAG_TO_IMAGE='1.0.1'
       - name: Print complete webhook event payload
         run: echo $TAG_TO_IMAGE
