@@ -7,7 +7,7 @@ on:
 
   pull_request:
     branches: [ main, develop, tag]
-    types: [closed]
+    types: [opened]
 
 
   workflow_dispatch:
