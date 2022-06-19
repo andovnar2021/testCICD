@@ -39,6 +39,9 @@ jobs:
         
       - name: 'docker git login'
         run: docker login ghcr.io -u andovnar2021 --password ${{ secrets.MY_TOKEN_IMAGE_TO_GIT }}
+        
+      - name: 'readme'
+        run: cat README.md
 
 
       - name: "Build"
