@@ -57,15 +57,21 @@ jobs:
       - name: 'readme'
         run: cat README.md
         
-  automerge:
-    
-      runs-on: ubuntu-latest
-      steps:
-         - id: automerge
-           name: automerge
-           uses: "pascalgn/automerge-action@v0.15.3"
-           env:
-             GITHUB_TOKEN: "${{ secrets.MYTOKEN}}"
+  amerge:
+#     needs: pull-request
+    name: merge
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: merge
+      uses: mtanzi/action-automerge@v1
+      id: merge
+      with:
+        github_token: ${{ secrets.MYTOKEN}}
+        source: 'simple'
+        target: 'main'   
+            
 
 
 #       - name: "Build"
